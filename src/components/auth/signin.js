@@ -2,15 +2,6 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 
 
-const renderField = ({input, meta:{touched, error}}) => {
-    return (
-      <fieldset  className="form-group" >
-        <label> {input.name && input.name[0].toUpperCase() + input.name.slice(1)}: </label>
-        <input {...input} className="form-control"/>
-      </fieldset>
-    )
-}
-
 
 class Signin extends Component {
   handleFormSubmit({ email, password }) {
