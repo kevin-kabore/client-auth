@@ -9,26 +9,40 @@ class Signin extends Component {
     // Need to do something to sign user in
     this.props.signInUser({email, password})
   }
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      )
+    }
+  }
   render() {
     //from reduxForm
     const { fields:{email, password}, handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
-          <label>Email</label>
+          <label>Email:</label>
           <input {...email} className="form-control"/>
         </fieldset>
         <fieldset className="form-group">
-          <label>Email</label>
-          <input {...password} className="form-control"/>
+          <label>Password:</label>
+          <input {...password} type="password" className="form-control"/>
         </fieldset>
-        <button className="btn btn-primary">Sign In</button>
+        {this.renderAlert()}
+        <button action="submit" className="btn btn-primary">Sign In</button>
       </form>
     )
   }
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error }
+}
+
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-}, null, actions)(Signin)
+}, mapStateToProps , actions)(Signin)
