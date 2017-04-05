@@ -1,4 +1,4 @@
-import Reatct, { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions'
 
@@ -10,7 +10,7 @@ class Signout extends Component {
   render() {
     return (
       <div>
-        Soorry to see you go...
+        Sorry to see you go...
       </div>
     )
   }
