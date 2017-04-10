@@ -3,10 +3,17 @@ import Header from './Header'
 
 export default class App extends Component {
   render() {
+    const divStyle = {
+      clear: 'left'
+    }
     return (
       <div>
-        <Header style="clear:all"/>
-        {this.props.children}
+        <div>
+          <Header />
+        </div>
+        <div style={divStyle}>
+          {this.props.children}
+        </div>
       </div>
     );
   }
